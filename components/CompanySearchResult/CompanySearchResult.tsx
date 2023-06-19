@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-import { Hash, Building2 } from 'lucide-react';
+import { Hash, Building2, AlertTriangle } from 'lucide-react';
 import useSearchCompanies from '#/hooks/useSearchCompanies';
 import { CompanySearchResultSkeleton } from '#/components/CompanySearchResult';
 
@@ -24,7 +24,12 @@ export default function CompanySearchResult({ query }: Props) {
   }
 
   if (isError) {
-    return <p>error!!!</p>;
+    return (
+      <div className="px-4 py-8 flex items-center gap-4 bg-red-200 rouned text-rose-900 rounded">
+        <AlertTriangle className="shrink-0" />
+        <p>{(error as Error)?.message}</p>
+      </div>
+    );
   }
 
   return (
