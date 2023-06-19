@@ -10,14 +10,19 @@ async function createCompany(data: Data) {
     const res = await fetch('/api/companies', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json;charset=UTF-8',
+        'content-type': 'application/json',
       },
       body: JSON.stringify({ data })
     });
     
-    const json = await res.json();
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message);
+    }
 
-    return json as { id: string };
+    const { id } = await res.json();
+
+    return id as string;
   } catch (error) {
     throw error;
   }
