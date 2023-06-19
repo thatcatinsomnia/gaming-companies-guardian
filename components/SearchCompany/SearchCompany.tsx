@@ -15,7 +15,7 @@ export default function SearchCompany() {
   };
 
   return (
-    <div className="mb-6 overflow-hidden">
+    <div className="overflow-hidden">
       <motion.div
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: '0%', opacity: 1 }}

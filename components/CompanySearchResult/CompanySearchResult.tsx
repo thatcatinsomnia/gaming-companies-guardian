@@ -33,7 +33,7 @@ export default function CompanySearchResult({ query }: Props) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="py-6 space-y-4">
       {data?.length === 0 && <p>沒有資料</p>}
 
       {data?.map(company => (
