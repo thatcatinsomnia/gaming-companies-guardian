@@ -34,15 +34,16 @@ export default function CompanySearchResult({ query }: Props) {
       {data?.map(company => (
         <div
           key={company.id}
-          className="p-6 flex items-center gap-10 border border-slate-300 rounded"
+          className="p-6 grid grid-cols-3 border border-slate-300 rounded"
         >
           <div>
-            <FieldName icon={<Hash size={16} />}>統一編號</FieldName>
-            <p>{company.tax_id_number}</p>
-          </div>
-          <div>
-            <FieldName icon={<Building2 size={16} />}>公司名稱</FieldName>
+            <FieldName icon={<Building2 size={15} />}>公司名稱</FieldName>
             <p>{company.name}</p>
+          </div>
+
+          <div>
+            <FieldName icon={<Hash size={15} />}>統一編號</FieldName>
+            <p>{company.tax_id_number || '-'}</p>
           </div>
         </div>
       ))}
