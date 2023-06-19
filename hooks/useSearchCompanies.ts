@@ -1,19 +1,12 @@
+import type Company from '#/types/Company';
 import { useQuery } from '@tanstack/react-query';
-import pb from '#/lib/pocketbase';
-
-type Company = {
-  id: string;
-  name: string;
-  tax_id_number: string;
-};
 
 const getCompanies = async (query: string = '') => {
   try {
-    const res = await pb.collection('company').getFullList<Company>({
-      filter: `name ~ ${query} || tax_id_number ~ ${query}`
-    });
+    const res = await fetch(`/api/companies?query=${query}`);
+    const { data } = await res.json();
 
-    return res;
+    return data as Company[];
   } catch (error) {
     throw error;
   }
