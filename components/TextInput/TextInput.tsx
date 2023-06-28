@@ -14,9 +14,9 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const outlineClass = isError && 'outline-rose-500';
 
   return (
-    <div className="relative">
+    <div className="relative h-24">
       <input
-        className={`p-4 w-full border border-slate-200 rounded ${outlineClass}`}
+        className={`px-4 h-16 w-full border border-slate-200 rounded ${outlineClass}`}
         ref={ref}
         type="text"
         autoComplete="off"
@@ -24,7 +24,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
         {...delegated}
       />
 
-      {isError && <small className="text-rose-500 absolute left-0 top-[calc(100%+2px)]">{error}</small>}
+      {isError && <small className="text-rose-500 absolute left-0 top-16">{error}</small>}
     </div>
   );
 });
