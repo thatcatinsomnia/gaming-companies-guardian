@@ -6,11 +6,17 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  color?: 'blue' | 'gray'
+};
+
+const ColorClasses = {
+  'blue': 'bg-blue-600 hover:bg-blue-700',
+  'gray': 'bg-gray-500 hover:bg-gray-600'
 };
 
 const MotionPanel = motion(Dialog.Panel);
 
-export default function Modal({ isOpen, onClose, children }: Props) {
+export default function Modal({ isOpen, onClose, color = 'blue', children }: Props) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,7 +43,7 @@ export default function Modal({ isOpen, onClose, children }: Props) {
             </div>
             
             <button
-              className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 transition-colors rounded"
+              className={`px-6 py-2 text-white ${ColorClasses[color]} transition-colors rounded`}
               onClick={onClose}
             >
               確定

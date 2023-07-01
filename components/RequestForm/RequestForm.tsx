@@ -34,6 +34,9 @@ export default function RequestForm() {
           particleCount: randomInRange(50, 100),
           origin: { y: 0.45 }
         });
+      },
+      onError: () => {
+        setIsOpen(true);
       }
     });
   };
@@ -102,6 +105,16 @@ export default function RequestForm() {
       </form>
   
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>成功新增公司 🎉</Modal>
+
+      {mutation.isError && (
+        <Modal 
+          isOpen={isOpen} 
+          onClose={() => setIsOpen(false)}
+          color="gray"
+        >
+          {mutation.isError && 'Oops, Something error 😱'}
+        </Modal>
+      )}
     </>
   );
 }
