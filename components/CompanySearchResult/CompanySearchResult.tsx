@@ -35,20 +35,20 @@ export default function CompanySearchResult({ query }: Props) {
   return (
     <div className="py-6 space-y-4">
       {data?.length === 0 && <p>沒有資料</p>}
-
+      
       {data?.map(company => (
         <div
           key={company.id}
-          className="p-6 grid grid-cols-3 border border-slate-300 rounded"
+          className="p-6 flex flex-col gap-4 border border-slate-300 rounded"
         >
-          <div>
-            <FieldName icon={<Building2 size={15} />}>公司名稱</FieldName>
-            <p>{company.name}</p>
-          </div>
-
           <div>
             <FieldName icon={<Hash size={15} />}>統一編號</FieldName>
             <p>{company.tax_id_number || '-'}</p>
+          </div>
+
+          <div>
+            <FieldName icon={<Building2 size={15} />}>公司名稱</FieldName>
+            <p>{company.name}</p>
           </div>
         </div>
       ))}
